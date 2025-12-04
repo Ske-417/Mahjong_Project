@@ -5,7 +5,7 @@ Represents a player's hand of tiles
 
 from typing import List, Set, Tuple
 from collections import Counter
-from mahjong_tile import Tile, TileType
+from mahjong_tile import Tile, TileType, JihaiType
 
 
 class Hand:
@@ -146,7 +146,6 @@ class Hand:
                 tiles.add(Tile(tile_type, value))
         
         # Honor tiles
-        from mahjong_tile import JihaiType
         for jihai in JihaiType:
             tiles.add(Tile(TileType.JIHAI, jihai=jihai))
         

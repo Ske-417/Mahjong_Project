@@ -7,6 +7,9 @@ import sys
 from mahjong_game import MahjongGame, Player
 from mahjong_tile import Tile
 
+# Maximum turns to prevent infinite loops (approximately 50 turns per player)
+MAX_GAME_TURNS = 200
+
 
 def print_separator():
     """Print a separator line"""
@@ -146,9 +149,8 @@ def main():
     
     # Game loop
     turn_count = 0
-    max_turns = 200  # Prevent infinite loops
     
-    while not game.game_over and turn_count < max_turns:
+    while not game.game_over and turn_count < MAX_GAME_TURNS:
         turn_count += 1
         
         if not play_turn(game):

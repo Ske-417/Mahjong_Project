@@ -143,13 +143,17 @@ class TestHand(unittest.TestCase):
         """Test winning hand with sequences"""
         hand = Hand()
         
-        # Create hand with sequences: 123 456 789 m + 11 p
-        for value in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
+        # Create hand with sequences: 123 456 789 m + 111 p + 22 s
+        for value in [1, 2, 3]:
             hand.add_tile(Tile(TileType.MANZU, value))
         for value in [4, 5, 6]:
             hand.add_tile(Tile(TileType.MANZU, value))
-        for _ in range(2):
+        for value in [7, 8, 9]:
+            hand.add_tile(Tile(TileType.MANZU, value))
+        for _ in range(3):
             hand.add_tile(Tile(TileType.PINZU, 1))
+        for _ in range(2):
+            hand.add_tile(Tile(TileType.SOUZU, 2))
         
         self.assertTrue(hand.check_win())
 
