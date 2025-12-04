@@ -121,14 +121,12 @@ class Hand:
                 return True
         
         # Try chi (3 consecutive tiles of same suit)
-        if first_tile.tile_type != TileType.JIHAI:
+        if first_tile.tile_type != TileType.JIHAI and first_tile.value <= 7:
             # Look for tile+1 and tile+2
             tile_plus_1 = Tile(first_tile.tile_type, first_tile.value + 1)
             tile_plus_2 = Tile(first_tile.tile_type, first_tile.value + 2)
             
-            if (first_tile.value <= 7 and 
-                tile_plus_1 in tiles and 
-                tile_plus_2 in tiles):
+            if (tile_plus_1 in tiles and tile_plus_2 in tiles):
                 remaining = tiles.copy()
                 remaining.remove(first_tile)
                 remaining.remove(tile_plus_1)
